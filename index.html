@@ -3,22 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Anime Scenery - An interactive weather widget with beautiful animated scenes">
-    <meta name="theme-color" content="#1a1d24">
-    <meta name="keywords" content="weather, widget, anime, scenery, animated, interactive">
-    <meta name="author" content="Adnan Bhaldar">
-    <meta property="og:title" content="Anime Changing Scenery">
-    <meta property="og:description" content="Interactive weather widget with beautiful animated anime-style scenes">
-    <meta property="og:type" content="website">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%231a1d24' stroke='%235ee7df' stroke-width='3'/><circle cx='50' cy='35' r='15' fill='%235ee7df'/></svg>">
-    <title>Anime Changing Scenery</title>
+    <title>Anime Scenery</title>
 </head>
 <body>
-    <!-- Skip link for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    
-    <svg id="noise-svg" aria-hidden="true">
+    <svg id="noise-svg">
         <!-- gives background a bit of texture -->
         <filter id='noiseFilter'>
             <feTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3' stitchTiles='stitch' />
@@ -26,7 +15,7 @@
         <rect id="noise-rect" filter='url(#noiseFilter)' />
     </svg>
     
-    <main id="main-content" class="outer-rim" role="application" aria-label="Weather scenery widget">
+    <div class="outer-rim">
         <div class="outer-rim-2">
             <div class="inner-rim">
                 <div class="outer-window">
@@ -3660,25 +3649,22 @@
                                 <path d="M36.55,67.17c2-.37,3.94-1.12,5.96-1.12,3.27,0,6.54,0,9.8,0,2.08,0,4.03,.72,6.02,1.22,.2,.05,.22,0,.08-.14l-4.85-4.84c-.05-.05-.05-.14,0-.19,0,0,.02-.02,.03-.02l2.32-1.42c.08-.05,.19-.03,.25,.05l6.18,8.63c.07,.1,.11,.09,.13-.03,.08-.88,.1-1.96,.07-3.26-.14-5.21,6.49-5.91,6.85-.72,.12,1.69,.15,3.61,.09,5.76-.07,2.46,.02,4.2-1.95,5.41-2.26,1.4-4.46-.54-4.88-2.82-.12-.63-.15-1.52-.11-2.67,0-.1-.05-.21-.14-.28l-2.18-1.85c-.1-.08-.2-.12-.31-.12h-25.01c-.12,0-.24,.03-.32,.1l-2.24,1.86c-.08,.07-.13,.18-.13,.3,.04,1.27-.03,2.28-.2,3.04-1.03,4.51-6.73,3.42-6.76-1.26-.02-4.12-.01-6.61,.04-7.45,.22-3.9,5.05-5.12,6.59-1.19,.53,1.36,.33,3.48,.41,4.97,0,.12,.05,.13,.12,.04,2.22-2.72,4.3-5.51,6.27-8.39,.06-.09,.18-.12,.26-.07l2.41,1.36c.07,.04,.09,.12,.05,.19,0,.01-.01,.02-.02,.03l-4.88,4.76c-.09,.08-.07,.12,.04,.09Z"/>
                               </svg>
                             </div>
-                            <div class="right-modal" role="region" aria-label="Temperature display">
-                                <p class="label" aria-hidden="true">Temperature</p>
-                                <div class="screen" role="status" aria-live="polite">
-                                    <p class="temp" aria-label="Current temperature is 34 degrees Fahrenheit">
+                            <div class="right-modal">
+                                <p class="label">Temperature</p>
+                                <div class="screen">
+                                    <p class="temp">
                                       34°F
                                     </p>
                                 </div>
-                                <button class="toggle active" id="toggle-far" role="button" aria-pressed="true" aria-label="Display temperature in Fahrenheit">°F</button>
-                                <button class="toggle two" id="toggle-cel" role="button" aria-pressed="false" aria-label="Display temperature in Celsius">°C</button>
+                                <div class="toggle active" id="toggle-far">°F</div>
+                                <div class="toggle two" id="toggle-cel">°C</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
-    <footer class="footer" role="contentinfo">
-        <p>Anime Changing Scenery &copy; 2024</p>
-    </footer>
+    </div>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
