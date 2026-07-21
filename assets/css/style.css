@@ -907,42 +907,14 @@ g#biplane {
    LANDING PAGE STYLES
    ========================================== */
 
-/* Header */
-.landing-header {
-    text-align: center;
-    padding: 20px 20px 15px;
-    transition: all 0.5s ease;
-}
-
-.landing-header h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--accent-cyan);
-    text-shadow: 0 0 15px var(--accent-cyan-glow);
-    margin: 0;
-    letter-spacing: 2px;
-    transition: all 0.5s ease;
-}
-
-.landing-header .tagline {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    margin-top: 5px;
-    letter-spacing: 1.5px;
-    transition: all 0.5s ease;
-}
-
 /* Main Content - Side by Side Layout */
 .main-content {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 100px);
-    padding: 15px;
+    min-height: 100vh;
+    padding: 20px;
     transition: all 0.5s ease;
 }
 
@@ -1143,19 +1115,6 @@ body.day-mode {
     --accent-cyan-glow: rgba(0, 102, 204, 0.3);
     --card-bg: rgba(255, 255, 255, 0.95);
     --card-border: rgba(0, 102, 204, 0.2);
-}
-
-body.day-mode .landing-header {
-    background: linear-gradient(180deg, rgba(245, 245, 245, 1) 0%, rgba(245, 245, 245, 0) 100%);
-}
-
-body.day-mode .landing-header h1 {
-    color: var(--accent-cyan);
-    text-shadow: 0 0 15px var(--accent-cyan-glow);
-}
-
-body.day-mode .landing-header .tagline {
-    color: var(--text-secondary);
 }
 
 body.day-mode .features-section {
