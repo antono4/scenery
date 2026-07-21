@@ -1,19 +1,23 @@
 @import url('https://fonts.cdnfonts.com/css/transponder-aoe');
 html, body {
     height: 100%;
-    -webkit-user-select: none; /* Safari 3.1+ */
-    -moz-user-select: none; /* Firefox 2+ */
-    -ms-user-select: none; /* IE 10+ */
-    user-select: none; /* Standard syntax */
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 body {
     display: flex;
     justify-content: center;
-    background: rgb(194 206 219);
-    background: linear-gradient(205deg, rgb(238 233 245) 0%, rgb(30 34 42) 100%);
+    align-items: center;
+    background: #0f1117;
+    background: radial-gradient(ellipse at center, #1a1f2e 0%, #0f1117 70%, #080a0f 100%);
     margin: 0;
     font-family:'poppins', sans-serif;
+    overflow: hidden;
 }
 .footer {
     position: absolute;
@@ -27,7 +31,8 @@ body {
 #noise-svg {
     height: 100%;
     width: 100%;
-    opacity: 0.1;
+    opacity: 0.05;
+    pointer-events: none;
 }
 #noise-rect {
     width: 100vw;
@@ -40,41 +45,45 @@ body {
     background: linear-gradient(205deg, rgb(69 75 85) 0%, rgb(22 25 32) 100%);
 }
 .outer-rim {
-    --init-size: min(min(500px, 40vw) , 50vh);
+    --init-size: min(min(500px, 35vw) , 45vh);
     width: var(--init-size);
     height: var(--init-size);
     border-radius: 50%;
-    overflow: hidden;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: -30px 30px 25px 8px rgb(0, 0, 0, 0.4), 
-        -60px 60px 35px 8px rgb(0, 0, 0, 0.5), 
-        -90px 90px 60px 8px rgb(0, 0, 0, 0.5); 
-}
-.outer-rim-2 {
-    width: calc(var(--init-size) * 0.97);
-    height: calc(var(--init-size) * 0.97);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 2px -2px 2px 0 rgb(108, 115, 129, 0.8), 
-    -25px 25px 10px 8px rgb(0, 0, 0, 0.5),
-    inset -2px 2px 2px 0 rgb(108, 115, 129, 0.2), 
-    inset 2px -2px 2px 0px rgb(0, 0, 0, 0.3);
-    border-radius: 50%;
-}
-.inner-rim {
-    border-radius: 50%;
-    width: calc(var(--init-size) * 0.92);
-    height: calc(var(--init-size) * 0.92);
+    overflow: visible;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 
-    -2px 2px 2px 0 rgba(108, 115, 129, 0.4), 
-    2px -2px 1px 0px rgba(0, 0, 0, 0.2), 
-    inset -3px 3px 2px 1px rgba(0, 0, 0, 0.5);
+        0 0 0 8px rgba(40, 44, 54, 1),
+        0 0 0 12px rgba(30, 34, 42, 1),
+        -15px 15px 40px 5px rgba(0, 0, 0, 0.5), 
+        -30px 30px 60px 10px rgba(0, 0, 0, 0.3), 
+        -45px 45px 80px 15px rgba(0, 0, 0, 0.2);
+}
+.outer-rim-2 {
+    width: calc(var(--init-size) * 0.96);
+    height: calc(var(--init-size) * 0.96);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 
+        0 0 0 1px rgba(120, 130, 150, 0.3),
+        inset 2px 2px 4px 0 rgba(150, 160, 180, 0.3),
+        inset -2px -2px 4px 0 rgba(0, 0, 0, 0.4),
+        inset 3px 3px 8px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+}
+.inner-rim {
+    border-radius: 50%;
+    width: calc(var(--init-size) * 0.88);
+    height: calc(var(--init-size) * 0.88);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 
+        inset 3px 3px 8px 2px rgba(0, 0, 0, 0.5),
+        inset -2px -2px 6px 1px rgba(100, 110, 130, 0.2),
+        0 0 20px 5px rgba(94, 231, 223, 0.1);
 }
 .outer-window.invert{
     rotate: 180deg;
@@ -920,8 +929,9 @@ g#biplane {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    width: 100vw;
     transition: all 0.5s ease;
+    overflow: hidden;
 }
 
 .main-content > svg {
@@ -934,9 +944,12 @@ g#biplane {
 }
 
 .content-wrapper {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100vh;
     transition: all 0.5s ease;
 }
 
@@ -946,6 +959,8 @@ g#biplane {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: var(--init-size);
+    height: var(--init-size);
 }
 
 /* ==========================================
@@ -961,21 +976,22 @@ body,
 
 body.night-mode {
     --accent-cyan: #5ee7df;
-    --accent-cyan-glow: rgba(94, 231, 223, 0.5);
-    --bg-primary: #141820;
-    --bg-secondary: #1a1f28;
+    --accent-cyan-glow: rgba(94, 231, 223, 0.4);
+    --bg-primary: #0f1117;
+    --bg-secondary: #1a1f2e;
     --text-primary: rgba(255, 255, 255, 0.9);
     --text-secondary: rgba(255, 255, 255, 0.5);
 }
 
 /* Day Mode (Light) */
 body.day-mode {
-    --bg-primary: #dce4ed;
+    background: radial-gradient(ellipse at center, #e8eef5 0%, #c5d0dd 70%, #a8b5c7 100%);
+    --bg-primary: #e8eef5;
     --bg-secondary: #ffffff;
     --text-primary: #1a1a2e;
     --text-secondary: #666666;
-    --accent-cyan: #0066cc;
-    --accent-cyan-glow: rgba(0, 102, 204, 0.3);
+    --accent-cyan: #2d7fd9;
+    --accent-cyan-glow: rgba(45, 127, 217, 0.3);
 }
 
 /* Day Mode Widget Styles */
@@ -1041,6 +1057,6 @@ body.day-mode .control-btn.active {
 /* Responsive */
 @media (max-width: 768px) {
     .outer-rim {
-        --init-size: min(min(400px, 85vw) , 55vh);
+        --init-size: min(min(350px, 85vw) , 45vh);
     }
 }
