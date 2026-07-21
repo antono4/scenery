@@ -40,16 +40,14 @@ body {
     background: linear-gradient(205deg, rgb(69 75 85) 0%, rgb(22 25 32) 100%);
 }
 .outer-rim {
-    --init-size: min(min(600px, 50vw) , 60vh);
+    --init-size: min(min(500px, 40vw) , 50vh);
     width: var(--init-size);
     height: var(--init-size);
     border-radius: 50%;
     overflow: hidden;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     box-shadow: -30px 30px 25px 8px rgb(0, 0, 0, 0.4), 
         -60px 60px 35px 8px rgb(0, 0, 0, 0.5), 
         -90px 90px 60px 8px rgb(0, 0, 0, 0.5); 
@@ -57,11 +55,9 @@ body {
 .outer-rim-2 {
     width: calc(var(--init-size) * 0.97);
     height: calc(var(--init-size) * 0.97);
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     box-shadow: 2px -2px 2px 0 rgb(108, 115, 129, 0.8), 
     -25px 25px 10px 8px rgb(0, 0, 0, 0.5),
     inset -2px 2px 2px 0 rgb(108, 115, 129, 0.2), 
@@ -72,11 +68,9 @@ body {
     border-radius: 50%;
     width: calc(var(--init-size) * 0.92);
     height: calc(var(--init-size) * 0.92);
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     box-shadow: 
     -2px 2px 2px 0 rgba(108, 115, 129, 0.4), 
     2px -2px 1px 0px rgba(0, 0, 0, 0.2), 
@@ -92,18 +86,17 @@ body {
     width: calc(var(--init-size) * 0.83);
     height: calc(var(--init-size) * 0.83 / 1.7);
     overflow: hidden;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .window {
-    top: -1%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: none;
     width: calc(var(--init-size) * 0.83);
     height: calc(var(--init-size) * 0.83 / 2);
-    bottom: unset;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 
