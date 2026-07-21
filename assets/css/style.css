@@ -37,28 +37,33 @@ body {
 .outer-rim,
 .outer-rim *{
     position: absolute;
+    background: linear-gradient(205deg, rgb(69 75 85) 0%, rgb(22 25 32) 100%);
+}
+.outer-rim {
+    --init-size: min(min(600px, 50vw) , 60vh);
+    width: var(--init-size);
+    height: var(--init-size);
+    border-radius: 50%;
+    overflow: hidden;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
-    background: linear-gradient(205deg, rgb(69 75 85) 0%, rgb(22 25 32) 100%);
-}
-.outer-rim {
-    --init-size: min(min(712px, 90vw) , 90vh);
-    width: var(--init-size);
-    height: var(--init-size);
-    border-radius: 50%;
-    overflow: hidden; 
-    box-shadow: -40px 40px 30px 10px rgb(0, 0, 0, 0.4), 
-        -80px 80px 40px 10px rgb(0, 0, 0, 0.6), 
-        -120px 120px 80px 10px rgb(0, 0, 0, 0.6); 
+    box-shadow: -30px 30px 25px 8px rgb(0, 0, 0, 0.4), 
+        -60px 60px 35px 8px rgb(0, 0, 0, 0.5), 
+        -90px 90px 60px 8px rgb(0, 0, 0, 0.5); 
 }
 .outer-rim-2 {
     width: calc(var(--init-size) * 0.97);
     height: calc(var(--init-size) * 0.97);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
     box-shadow: 2px -2px 2px 0 rgb(108, 115, 129, 0.8), 
-    -30px 30px 12px 10px rgb(0, 0, 0, 0.5),
+    -25px 25px 10px 8px rgb(0, 0, 0, 0.5),
     inset -2px 2px 2px 0 rgb(108, 115, 129, 0.2), 
     inset 2px -2px 2px 0px rgb(0, 0, 0, 0.3);
     border-radius: 50%;
@@ -67,6 +72,11 @@ body {
     border-radius: 50%;
     width: calc(var(--init-size) * 0.92);
     height: calc(var(--init-size) * 0.92);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
     box-shadow: 
     -2px 2px 2px 0 rgba(108, 115, 129, 0.4), 
     2px -2px 1px 0px rgba(0, 0, 0, 0.2), 
@@ -82,8 +92,11 @@ body {
     width: calc(var(--init-size) * 0.83);
     height: calc(var(--init-size) * 0.83 / 1.7);
     overflow: hidden;
-    top: 4%;
-    bottom: unset;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 .window {
     top: -1%;
@@ -907,7 +920,7 @@ g#biplane {
    LANDING PAGE STYLES
    ========================================== */
 
-/* Main Content - Side by Side Layout */
+/* Main Content - Centered Layout */
 .main-content {
     position: relative;
     display: flex;
@@ -929,10 +942,6 @@ g#biplane {
 
 .content-wrapper {
     display: flex;
-    flex-direction: row;
-    gap: 30px;
-    max-width: 1400px;
-    width: 100%;
     justify-content: center;
     align-items: center;
     transition: all 0.5s ease;
@@ -941,127 +950,9 @@ g#biplane {
 /* Widget Section */
 .widget-section {
     position: relative;
-    flex: 0 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-/* Features Section - Side Panel */
-.features-section {
-    flex: 0 0 320px;
-    padding: 20px;
-    background: linear-gradient(145deg, rgba(30, 34, 42, 0.95), rgba(20, 24, 30, 0.98));
-    border: 1px solid rgba(94, 231, 223, 0.15);
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.5s ease;
-}
-
-.features-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.features-container h2 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1rem;
-    color: var(--accent-cyan);
-    margin: 0 0 8px 0;
-    text-shadow: 0 0 10px var(--accent-cyan-glow);
-    text-align: center;
-}
-
-.feature-card {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(94, 231, 223, 0.1);
-    border-radius: 10px;
-    padding: 14px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    transition: all 0.3s ease;
-}
-
-.feature-card:hover {
-    border-color: rgba(94, 231, 223, 0.3);
-}
-
-.feature-icon {
-    font-size: 1.5rem;
-    flex-shrink: 0;
-}
-
-.feature-info {
-    flex: 1;
-    min-width: 0;
-}
-
-.feature-info h3 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.8rem;
-    color: var(--text-primary);
-    margin: 0 0 2px 0;
-}
-
-.feature-info p {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.7rem;
-    color: var(--text-secondary);
-    margin: 0 0 6px 0;
-}
-
-/* Feature card inner components */
-.feature-card .time-display {
-    background: rgba(20, 24, 30, 0.8);
-    padding: 6px 10px;
-    border-radius: 6px;
-}
-
-.feature-card .time-display .time {
-    font-size: 1rem;
-}
-
-.feature-card .time-display .date {
-    font-size: 0.6rem;
-}
-
-.feature-card .weather-display {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 6px;
-}
-
-.feature-card .weather-item {
-    background: rgba(20, 24, 30, 0.8);
-    padding: 5px 8px;
-    border-radius: 5px;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-}
-
-.feature-card .weather-icon {
-    font-size: 0.8rem;
-}
-
-.feature-card .weather-value {
-    font-size: 0.7rem;
-}
-
-.feature-card .controls-display {
-    justify-content: center;
-    gap: 5px;
-    margin-top: 4px;
-}
-
-.feature-card .control-btn {
-    width: 34px;
-    height: 34px;
 }
 
 /* ==========================================
@@ -1070,11 +961,7 @@ g#biplane {
 
 /* Night Mode (Default - Dark) */
 body,
-.main-content,
-.features-section,
-.feature-card,
-.feature-card .time-display,
-.feature-card .weather-item {
+.main-content {
     background-color: var(--bg-primary);
     color: var(--text-primary);
 }
@@ -1096,62 +983,6 @@ body.day-mode {
     --text-secondary: #666666;
     --accent-cyan: #0066cc;
     --accent-cyan-glow: rgba(0, 102, 204, 0.3);
-    --card-bg: rgba(255, 255, 255, 0.95);
-    --card-border: rgba(0, 102, 204, 0.2);
-}
-
-body.day-mode .features-section {
-    background: var(--card-bg);
-    border-color: var(--card-border);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-body.day-mode .feature-card {
-    background: rgba(0, 0, 0, 0.03);
-    border-color: var(--card-border);
-}
-
-body.day-mode .feature-card:hover {
-    border-color: var(--accent-cyan);
-    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.1);
-}
-
-body.day-mode .feature-info h3 {
-    color: var(--text-primary);
-}
-
-body.day-mode .feature-info p {
-    color: var(--text-secondary);
-}
-
-body.day-mode .feature-card .time-display {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-body.day-mode .feature-card .time-display .time {
-    color: var(--accent-cyan);
-    text-shadow: 0 0 10px var(--accent-cyan-glow);
-}
-
-body.day-mode .feature-card .time-display .date {
-    color: var(--text-secondary);
-}
-
-body.day-mode .feature-card .weather-item {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-body.day-mode .feature-card .weather-value {
-    color: var(--text-primary);
-}
-
-body.day-mode .control-btn {
-    background: var(--card-bg);
-    border-color: var(--card-border);
-}
-
-body.day-mode .control-btn:hover {
-    border-color: var(--accent-cyan);
 }
 
 /* Day Mode Widget Styles */
@@ -1215,20 +1046,8 @@ body.day-mode .control-btn.active {
 }
 
 /* Responsive */
-@media (max-width: 1100px) {
-    .content-wrapper {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-    
-    .widget-section {
-        flex: 1 1 auto;
-        min-width: 300px;
-    }
-    
-    .features-section {
-        flex: 0 0 auto;
-        width: 300px;
+@media (max-width: 768px) {
+    .outer-rim {
+        --init-size: min(min(400px, 85vw) , 55vh);
     }
 }
