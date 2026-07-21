@@ -1,76 +1,73 @@
 @import url('https://fonts.cdnfonts.com/css/transponder-aoe');
 html, body {
     height: 100%;
-    -webkit-user-select: none; /* Safari 3.1+ */
-    -moz-user-select: none; /* Firefox 2+ */
-    -ms-user-select: none; /* IE 10+ */
-    user-select: none; /* Standard syntax */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 body {
     display: flex;
     justify-content: center;
-    background: rgb(194 206 219);
-    background: linear-gradient(205deg, rgb(238 233 245) 0%, rgb(30 34 42) 100%);
+    align-items: center;
+    background: #0f1117;
+    background: radial-gradient(ellipse at center, #1a1f2e 0%, #0f1117 70%, #080a0f 100%);
     margin: 0;
     font-family:'poppins', sans-serif;
-}
-.footer {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    font-family: monospace;
-    color: #aaa;
-    padding: 10px;
-    font-size: 12px;
-}
-#noise-svg {
-    height: 100%;
-    width: 100%;
-    opacity: 0.1;
-}
-#noise-rect {
-    width: 100vw;
-    height: 100vh;
+    overflow: hidden;
 }
 
 .outer-rim,
 .outer-rim *{
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    background: linear-gradient(205deg, rgb(69 75 85) 0%, rgb(22 25 32) 100%);
 }
 .outer-rim {
-    --init-size: min(min(712px, 90vw) , 90vh);
+    --init-size: min(min(500px, 35vw) , 45vh);
     width: var(--init-size);
     height: var(--init-size);
     border-radius: 50%;
-    overflow: hidden; 
-    box-shadow: -40px 40px 30px 10px rgb(0, 0, 0, 0.4), 
-        -80px 80px 40px 10px rgb(0, 0, 0, 0.6), 
-        -120px 120px 80px 10px rgb(0, 0, 0, 0.6); 
+    overflow: visible;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(145deg, #4a4f5c, #1e2128);
+    box-shadow: 
+        0 0 60px rgba(94, 231, 223, 0.15),
+        0 0 100px rgba(0, 0, 0, 0.5),
+        20px 20px 60px rgba(0, 0, 0, 0.6),
+        40px 40px 80px rgba(0, 0, 0, 0.4),
+        60px 60px 120px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3);
 }
 .outer-rim-2 {
-    width: calc(var(--init-size) * 0.97);
-    height: calc(var(--init-size) * 0.97);
-    box-shadow: 2px -2px 2px 0 rgb(108, 115, 129, 0.8), 
-    -30px 30px 12px 10px rgb(0, 0, 0, 0.5),
-    inset -2px 2px 2px 0 rgb(108, 115, 129, 0.2), 
-    inset 2px -2px 2px 0px rgb(0, 0, 0, 0.3);
+    width: calc(var(--init-size) * 0.96);
+    height: calc(var(--init-size) * 0.96);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(160deg, #3a3f4c, #181a20);
+    box-shadow: 
+        inset 3px 3px 6px rgba(255, 255, 255, 0.08),
+        inset -3px -3px 6px rgba(0, 0, 0, 0.4),
+        inset 5px 5px 15px rgba(0, 0, 0, 0.5),
+        inset -5px -5px 15px rgba(100, 110, 130, 0.1);
     border-radius: 50%;
 }
 .inner-rim {
     border-radius: 50%;
-    width: calc(var(--init-size) * 0.92);
-    height: calc(var(--init-size) * 0.92);
+    width: calc(var(--init-size) * 0.88);
+    height: calc(var(--init-size) * 0.88);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(180deg, #141820, #0a0c10);
     box-shadow: 
-    -2px 2px 2px 0 rgba(108, 115, 129, 0.4), 
-    2px -2px 1px 0px rgba(0, 0, 0, 0.2), 
-    inset -3px 3px 2px 1px rgba(0, 0, 0, 0.5);
+        inset 0 0 80px 20px rgba(0, 0, 0, 0.8),
+        inset 8px 8px 20px rgba(0, 0, 0, 0.6),
+        inset -4px -4px 10px rgba(80, 90, 110, 0.15),
+        inset 0 1px 2px rgba(255, 255, 255, 0.05);
 }
 .outer-window.invert{
     rotate: 180deg;
@@ -78,24 +75,31 @@ body {
     scale: 0.99;
 }
 .outer-window {
-    background: none;
+    background: linear-gradient(180deg, rgba(40, 44, 54, 0.9), rgba(25, 28, 36, 0.95));
     width: calc(var(--init-size) * 0.83);
     height: calc(var(--init-size) * 0.83 / 1.7);
     overflow: hidden;
-    top: 4%;
-    bottom: unset;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 
+        inset 0 2px 4px rgba(255, 255, 255, 0.05),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
 }
 .window {
-    top: -1%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: none;
     width: calc(var(--init-size) * 0.83);
     height: calc(var(--init-size) * 0.83 / 2);
-    bottom: unset;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 
-    -2px 2px 2px 0 rgba(108, 115, 129, 0.4), 
-    2px -2px 1px 0px rgba(0, 0, 0, 0.2);
+        0 4px 12px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.08),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.3);
 }
 .outer-window:not(.invert) svg {
     opacity: 0;
@@ -390,10 +394,9 @@ body {
 .invert .window-rounded{
     background: linear-gradient(0deg, rgba(0,0,0,0.7) 48%, rgba(255,255,255,0) 57%, rgba(255,255,255,0) 100%), rgb(202, 216, 228);
     box-shadow: 
-    -2px 2px 1px 0px rgba(0, 0, 0, 0.4), 
-    2px -2px 2px 0 rgba(108, 115, 129, 0.2), 
-    inset -4px -3px 12px 1px rgba(152, 243, 248, 0.1),
-    inset 2px 3px 7px 1px rgba(0, 0, 0, 0.5);
+        inset -4px -3px 12px 1px rgba(152, 243, 248, 0.1),
+        inset 2px 3px 7px 1px rgba(0, 0, 0, 0.5),
+        0 2px 4px rgba(255, 255, 255, 0.1);
 }
 
 .invert .window {
@@ -402,7 +405,7 @@ body {
     -2px 4px 3px 0px rgba(0, 0, 0, 0.4);
 }
 .window-rounded {
-    background: rgb(0, 0, 0, 0.5);
+    background: linear-gradient(180deg, rgba(10, 12, 18, 0.8), rgba(0, 0, 0, 0.9));
     border-radius: 50%;
     height: 200%;
     bottom: unset;
@@ -410,9 +413,9 @@ body {
     margin: 1px;
     overflow: hidden;
     box-shadow: 
-    -2px 2px 2px 0 rgba(108, 115, 129, 0.4), 
-    2px -2px 1px 0px rgba(0, 0, 0, 0.2), 
-    inset -3px 3px 2px 1px rgba(0, 0, 0, 0.5);
+        inset 0 4px 8px rgba(0, 0, 0, 0.8),
+        inset 0 -2px 4px rgba(100, 110, 130, 0.1),
+        0 2px 4px rgba(255, 255, 255, 0.05);
 }
 .loading-bar {
     background: none;
@@ -470,11 +473,11 @@ body {
     bottom: unset;
     top: 12.2%;
     right: 0.5%;
-    background: none;
+    background: radial-gradient(ellipse at 30% 30%, rgba(50, 55, 65, 0.8), rgba(20, 25, 35, 0.9));
     box-shadow: 
-    -12px 22px 22px 0px rgba(152, 243, 248,0.2), 
-    -6px 12px 12px 4px rgba(152, 243, 248, 0.2), 
-    0px 0px 0px 4px rgba(108, 115, 129, 0); 
+        inset 2px 2px 8px rgba(255, 255, 255, 0.05),
+        inset -2px -2px 8px rgba(0, 0, 0, 0.4),
+        -8px 16px 24px 4px rgba(152, 243, 248, 0.15);
 }
 .circle {
     border-radius: 50%;
@@ -485,8 +488,8 @@ body {
     right: 0.5%;
     transition: transform 1s ease-in-out;
     box-shadow: 
-    0px 0px 2px 2px rgba(108, 115, 129, 0.4), 
-    0px 0px 3px 4px rgba(108, 115, 129, 0.2); 
+        0px 0px 2px 2px rgba(108, 115, 129, 0.4), 
+        0px 0px 3px 4px rgba(108, 115, 129, 0.2); 
 }
 .inner-circle {
     border-radius: 50%;
@@ -495,14 +498,14 @@ body {
     bottom: unset;
     top: 12.5%;
     box-shadow:
-    26px -26px 42px 20px rgba(0, 0, 0, 0.5),
-    16px -16px 22px 0px rgba(0, 0, 0, 0.4),
-    6px -6px 12px 0px rgba(0, 0, 0, 0.5),
-    inset -3px 3px 2px 1px rgba(0, 0, 0, 0.5),
-    inset 5px -5px 14px 3px rgba(108, 115, 129, 0.5), 
-    inset 10px -10px 12px 5px rgba(0, 0, 0, 0.1);
+        26px -26px 42px 20px rgba(0, 0, 0, 0.5),
+        16px -16px 22px 0px rgba(0, 0, 0, 0.4),
+        6px -6px 12px 0px rgba(0, 0, 0, 0.5),
+        inset -3px 3px 2px 1px rgba(0, 0, 0, 0.5),
+        inset 5px -5px 14px 3px rgba(108, 115, 129, 0.5), 
+        inset 10px -10px 12px 5px rgba(0, 0, 0, 0.1);
     display: block;
-    background: linear-gradient(25deg, rgb(69 75 85) 0%, rgb(22 25 32) 100%);
+    background: linear-gradient(145deg, #4a4f5c, #1e2128);
     cursor: pointer;
 }
 .sixths-container {
@@ -573,18 +576,20 @@ body {
     left: unset;
     right: 15.5%;
     overflow: hidden;
+    background: linear-gradient(145deg, #353a45, #252830);
     box-shadow: 
-    -4px 4px 4px 0px rgba(0, 0, 0, 0.3),
-    0px 0px 0px 1px rgba(0,0,0, 0.6);
+        0 4px 8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.05),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    transition: box-shadow 0.1s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 .power:hover{
+    background: linear-gradient(145deg, #3d424d, #2a2e38);
     box-shadow: 
-    -3px 3px 2px 0px rgba(0, 0, 0, 0.3),
-    0px 0px 0px 1px rgba(0,0,0, 0.6),
-    inset 0px 0px 5px 3px rgba(0,0,0, 0.2),
-    inset 0px 0px 0px 1px rgba(0,0,0, 0.3);
+        0 2px 4px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.08),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3);
 }
 .power:hover .inner-power {
     scale: 0.97;
@@ -594,18 +599,17 @@ body {
     width: 80%;
     height: 80%;
     border-radius: 10px;
+    background: linear-gradient(160deg, #1a1d24, #0d0f14);
     box-shadow: 
-    4px -4px 18px 4px rgba(0, 0, 0, 0.3),
-    0px 0px 2px 1px rgba(108, 115, 129, 0.6),
-    inset 0px -54px 18px -20px rgba(0, 0, 0, 0.2),
-    inset 4px -4px 18px 4px rgba(0, 0, 0, 0.3);
+        inset 0 -54px 18px -20px rgba(0, 0, 0, 0.2),
+        inset 4px -4px 18px 4px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.03);
 }
 .power:hover .inner-power{
     box-shadow: 
-    4px -4px 18px 4px rgba(0, 0, 0, 0.4),
-    0px 0px 2px 1px rgba(108, 115, 129, 0.6),
-    inset 0px -54px 18px -20px rgba(0, 0, 0, 0.2),
-    inset 4px -4px 18px 4px rgba(0, 0, 0, 0.4);
+        inset 0 -54px 18px -20px rgba(0, 0, 0, 0.2),
+        inset 4px -4px 18px 4px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.05);
 }
 .inner-power::before {
     display: block;
@@ -621,8 +625,9 @@ body {
     margin: auto;
     border: 2px solid rgba(152, 243, 248,0.6);
     box-shadow: 
-    0px 0px 4px 2px rgba(152, 243, 248, 0.1);
-    transition: all 0.1s ease-in-out;
+        0px 0px 8px 2px rgba(152, 243, 248, 0.2),
+        inset 0 0 4px rgba(152, 243, 248, 0.1);
+    transition: all 0.2s ease-in-out;
 }
 .inner-power::after{
     display: block;
@@ -725,17 +730,18 @@ body {
     filter: drop-shadow(0px 0px 6px rgba(152, 243, 248, 1));
 }
 .right-modal {
-    background: rgb(40, 44, 54);
+    background: linear-gradient(180deg, #2a2f3a, #1e2229);
     width: 32%;
     height: 51%;
     right: unset;
     left: 0;
     bottom: unset;
     box-shadow: 
-    inset 0px 0px 40px 42px rgba(0,0,0, 0.3),
-    inset -24px 0px 16px -22px rgba(158, 192, 201, 1),
-    inset 0px -54px 18px -20px rgba(0, 0, 0, 0.4),
-    inset 4px -4px 18px 4px rgba(0, 0, 0, 0.3);
+        inset 0px 0px 40px 42px rgba(0,0,0, 0.4),
+        inset -24px 0px 16px -22px rgba(158, 192, 201, 0.8),
+        inset 0px -54px 18px -20px rgba(0, 0, 0, 0.5),
+        inset 4px -4px 18px 4px rgba(0, 0, 0, 0.4),
+        0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .right-modal p.label{
     color: rgba(170, 170, 170, 0.2);
@@ -756,7 +762,7 @@ body {
     0px 0px 8px rgba(255, 255, 255, 0.5);
 }
 .screen {
-    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg, #0a0c10, #050608);
     width: 60%;
     height: 16%;
     right: unset;
@@ -766,9 +772,10 @@ body {
     text-align: center;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 0 5px 0 rgba(108, 115, 129, 0.5),
-    inset 0 0 2px 2px rgba(0,0,0, 1),
-    inset 0 0 2px 2px rgba(255,255,255, 0.7);
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.8),
+        inset 0 -1px 2px rgba(255, 255, 255, 0.05),
+        0 2px 4px rgba(0, 0, 0, 0.3);
 }
 .power-on p.temp {
     color: rgba(255, 255, 255, 0.45);
@@ -793,7 +800,7 @@ p.temp {
 .toggle {
     color: rgba(170, 170, 170, 0.725);
     font-size: calc(var(--init-size) / 50);
-    background: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(145deg, #2a2e38, #1a1d24);
     rotate: 180deg;
     width: 24%;
     height: 8%;
@@ -804,12 +811,11 @@ p.temp {
     left: 29%;
     bottom: -23%;
     box-shadow: 
-    2px -2px 4px 0 rgba(255, 255, 255, 0.1),
-    -2px 2px 6px 0 rgba(0,0,0, 0.7),
-    0px -5px 12px 0 rgba(158, 192, 201, 0.1),
-    inset 0px 0px 1px 1px rgba(0, 0, 0, 0.7),
-    inset -1px 2px 4px 0 rgba(255, 255, 255, 0.4);
+        0 4px 8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.05),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 .toggle.two{
     left: 18%;
@@ -820,21 +826,18 @@ p.temp {
     text-shadow:
     0px 0px 3px rgba(255, 255, 255, 0.5),
     0px 0px 8px rgba(255, 255, 255, 0.6);
+    background: linear-gradient(145deg, #1e2229, #141820);
     box-shadow: 
-    2px -2px 4px 0 rgba(255, 255, 255, 0.1),
-    -2px 2px 6px 0 rgba(0,0,0, 0.7),
-    0px -5px 12px 0 rgba(158, 192, 201, 0.1),
-    inset 0px 0px 1px 1px rgba(0, 0, 0, 0.7),
-    inset -1px 2px 4px 0 rgba(255, 255, 255, 0.4);
+        0 2px 4px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.05),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3);
 }
 .toggle:hover{
-    background: rgba(0, 0, 0, 0.6);
+    background: linear-gradient(145deg, #353a45, #252830);
     box-shadow: 
-    2px -2px 4px 0 rgba(255, 255, 255, 0.1),
-    -2px 2px 6px 0 rgba(0,0,0, 0.7),
-    0px -5px 12px 0 rgba(158, 192, 201, 0.1),
-    inset 0px 0px 1px 1px rgba(0, 0, 0, 0.7),
-    inset -1px 2px 4px 0 rgba(255, 255, 255, 0.3);
+        0 2px 4px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.08),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3);
     scale: 0.97;
 }
 g#rocket {
