@@ -904,109 +904,174 @@ g#biplane {
 }
 
 /* ==========================================
-   NEW FEATURES STYLES - Outside the widget
+   LANDING PAGE STYLES
    ========================================== */
 
-.features-panel {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background: linear-gradient(145deg, rgba(30, 34, 42, 0.95), rgba(20, 24, 30, 0.98));
-    padding: 15px 20px;
-    border-radius: 15px;
-    border: 1px solid rgba(94, 231, 223, 0.2);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    z-index: 100;
+/* Header */
+.landing-header {
+    text-align: center;
+    padding: 40px 20px 20px;
+    background: linear-gradient(180deg, rgba(20, 24, 30, 1) 0%, rgba(20, 24, 30, 0) 100%);
 }
 
-.time-display {
+.landing-header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    text-shadow: 0 0 20px var(--accent-cyan-glow);
+    margin: 0;
+    letter-spacing: 3px;
+}
+
+.landing-header .tagline {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+/* Widget Section */
+.widget-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 20px;
+}
+
+/* Features Section */
+.features-section {
+    background: linear-gradient(180deg, rgba(20, 24, 30, 0) 0%, rgba(20, 24, 30, 1) 30%);
+    padding: 60px 20px;
     text-align: center;
 }
 
-.time-display .time {
-    display: block;
+.features-container h2 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.8rem;
     color: var(--accent-cyan);
+    margin-bottom: 40px;
     text-shadow: 0 0 15px var(--accent-cyan-glow);
 }
 
-.time-display .date {
-    display: block;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    margin-top: 4px;
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.weather-display {
-    display: flex;
-    gap: 20px;
-}
-
-.weather-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.weather-icon {
-    font-size: 1.2rem;
-}
-
-.weather-label {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-}
-
-.weather-value {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
-.controls-display {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.control-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
+.feature-card {
     background: linear-gradient(145deg, rgba(30, 34, 42, 0.9), rgba(20, 24, 30, 0.95));
     border: 1px solid rgba(94, 231, 223, 0.15);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 15px;
+    padding: 30px;
     transition: all 0.3s ease;
 }
 
-.control-btn:hover {
+.feature-card:hover {
     border-color: rgba(94, 231, 223, 0.4);
-    transform: translateY(-2px);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.control-btn:active {
-    transform: scale(0.95);
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
 }
 
-.control-btn .icon {
+.feature-info h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.feature-info p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+/* Feature card inner components */
+.feature-card .time-display {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.feature-card .time-display .time {
+    font-size: 1.5rem;
+}
+
+.feature-card .time-display .date {
+    font-size: 0.75rem;
+}
+
+.feature-card .weather-display {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.feature-card .weather-item {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.feature-card .weather-icon {
     font-size: 1.2rem;
 }
 
-.control-btn.active {
-    background: linear-gradient(145deg, rgba(94, 231, 223, 0.2), rgba(94, 231, 223, 0.1));
-    border-color: var(--accent-cyan);
+.feature-card .weather-value {
+    font-size: 1rem;
+}
+
+.feature-card .controls-display {
+    margin-top: 10px;
+}
+
+.feature-card .control-btn {
+    width: 45px;
+    height: 45px;
+}
+
+/* Footer */
+.landing-footer {
+    text-align: center;
+    padding: 30px;
+    background: rgba(20, 24, 30, 1);
+    border-top: 1px solid rgba(94, 231, 223, 0.1);
+}
+
+.landing-footer p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .landing-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .widget-section {
+        min-height: 50vh;
+    }
 }
