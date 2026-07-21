@@ -1,138 +1,168 @@
-var rotateDiv = document.getElementById('rot');
-var rotateIcons = document.getElementById('rot-icons');
-var clickRotateDiv = document.getElementById('click-rot');
-var angle = 0;
+// DOM Elements
+const rotateDiv = document.getElementById('rot');
+const rotateIcons = document.getElementById('rot-icons');
+const clickRotateDiv = document.getElementById('click-rot');
+const toggles = document.querySelectorAll('.toggle');
+const tempElement = document.querySelector('.temp');
+const sixths = Array.from(document.querySelectorAll('.sixths'));
 
+// State
+let angle = 0;
+let currentTempF = 34;
+let isAnimating = false;
+let currentIndex = 0;
+
+// Weather modes configuration
+const weatherModes = [
+  { id: 'sun', temp: 34, classes: [] },
+  { id: 'sunset', temp: 27, classes: ['sunset'] },
+  { id: 'moon', temp: 14, classes: ['moon'] },
+  { id: 'clouds', temp: 16, classes: ['clouds'] },
+  { id: 'storm', temp: 8, classes: ['storm'] },
+  { id: 'snow', temp: -4, classes: ['snow'] }
+];
+
+// Create rotating dial gradient
+function createDialGradient() {
+  const step = 2;
+  const color1 = 'rgba(0,0,0,0.5)';
+  const color2 = 'rgba(0,0,0,0.1)';
+  let gradient = 'conic-gradient(';
+  
+  for (let i = 0; i < 360; i += step) {
+    const color = i % (2 * step) === 0 ? color1 : color2;
+    gradient += `${color} ${i}deg, `;
+  }
+  gradient = gradient.slice(0, -2) + '), rgb(85 93 108)';
+  
+  rotateDiv.style.background = gradient;
+}
+
+// Rotation handler
 clickRotateDiv.onclick = function() {
   angle += 60;
-  rotateDiv.style.transform = 'rotate(' + angle + 'deg)';
-  rotateIcons.style.transform = 'rotate(' + angle + 'deg)';
+  rotateDiv.style.transform = `rotate(${angle}deg)`;
+  rotateIcons.style.transform = `rotate(${angle}deg)`;
+  
+  // Add subtle pulse animation
+  clickRotateDiv.style.transform = 'scale(0.95)';
+  setTimeout(() => {
+    clickRotateDiv.style.transform = 'scale(1)';
+  }, 150);
 };
 
-var step = 2;
-var color1 = 'rgba(0,0,0,0.5)';
-var color2 = 'rgba(0,0,0,0.1)';
-
-var gradient = ' conic-gradient(';
-for (var i = 0; i < 360; i += step) {
-  var color = i % (2 * step) === 0 ? color1 : color2;
-  gradient += color + ' ' + i + 'deg, ';
-}
-gradient = gradient.slice(0, -2) + '), rgb(85 93 108)'; 
-
-rotateDiv.style.background = gradient;
-
-
-var toggles = document.querySelectorAll('.toggle');
-var tempElement = document.querySelector('.temp');
-
-let isAnimating = false; // Add flag to indicate if animation is active
-
-toggles.forEach(function(toggle) {
+// Temperature unit toggle
+toggles.forEach(toggle => {
   toggle.addEventListener('click', function() {
-    if (this.classList.contains('active') || isAnimating) { // Check if animation is active
-      return;
-    }
-    toggles.forEach(function(toggle) {
-      toggle.classList.remove('active');
-    });
+    if (this.classList.contains('active') || isAnimating) return;
+    
+    toggles.forEach(t => t.classList.remove('active'));
     this.classList.add('active');
-    var tempValue = parseFloat(tempElement.textContent);
+    
+    const tempValue = parseFloat(tempElement.textContent);
     if (this.id === 'toggle-cel') {
-      var celsius = Math.round((tempValue - 32) * 5 / 9);
-      tempElement.textContent = celsius + '°C';
-    } else if (this.id === 'toggle-far') {
-      var fahrenheit = Math.round(tempValue * 9 / 5 + 32);
-      tempElement.textContent = fahrenheit + '°F';
+      const celsius = Math.round((tempValue - 32) * 5 / 9);
+      tempElement.textContent = `${celsius}°C`;
+    } else {
+      const fahrenheit = Math.round(tempValue * 9 / 5 + 32);
+      tempElement.textContent = `${fahrenheit}°F`;
     }
   });
 });
 
-let currentTempF = 34; // Initialize with the initial temperature in Fahrenheit
-
-// cubic ease in/out function
+// Easing function
 function easeInOutCubic(t) {
-  return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1;
+  return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
 }
 
+// Temperature animation
 function changeTemp(element, newTemp) {
-  let unit = element.innerHTML.includes("F") ? "°F" : "°C";
-  let currentTemp = unit === "°F" ? currentTempF : Math.round((currentTempF - 32) * 5 / 9);
-  let finalTemp = unit === "°F" ? newTemp : Math.round((newTemp - 32) * 5 / 9);
-
-  let duration = 2000; // Duration of the animation in milliseconds
+  const unit = element.innerHTML.includes('F') ? '°F' : '°C';
+  const currentTemp = unit === '°F' ? currentTempF : Math.round((currentTempF - 32) * 5 / 9);
+  const finalTemp = unit === '°F' ? newTemp : Math.round((newTemp - 32) * 5 / 9);
+  
+  const duration = 2000;
   let startTime = null;
 
   function animate(currentTime) {
-    if (startTime === null) {
-      startTime = currentTime;
-    }
-
+    if (startTime === null) startTime = currentTime;
+    
     let elapsed = currentTime - startTime;
     let progress = Math.min(elapsed / duration, 1);
     progress = easeInOutCubic(progress);
-
-    let tempNow = Math.round(currentTemp + (progress * (finalTemp - currentTemp)));
+    
+    const tempNow = Math.round(currentTemp + (progress * (finalTemp - currentTemp)));
     element.innerHTML = `${tempNow}${unit}`;
-
+    
     if (progress < 1) {
       requestAnimationFrame(animate);
     } else {
-      // Update currentTempF once the animation is complete
       currentTempF = newTemp;
-      isAnimating = false; // Reset the flag when animation is done
+      isAnimating = false;
     }
   }
 
-  isAnimating = true; // Set flag when animation starts
+  isAnimating = true;
   requestAnimationFrame(animate);
 }
 
-
-window.onload = function() {
-  const sixths = Array.from(document.querySelectorAll('.sixths'));
-  let index = 0;
-  let temp = document.querySelector('.temp');
-
-  document.querySelector('#rot-icons').addEventListener('click', () => {
-    sixths[index].classList.remove('active');
-    index = (index + 1) % sixths.length;
-    sixths[index].classList.add('active');
-    if (index == 0 ) {
-      changeTemp(temp, 34);
-      console.log("sun")
-      document.querySelector('#mountains').classList.remove("snow");
-      document.querySelector('#mountains').classList.remove("clouds");
-    } else if (index == 1) {
-      changeTemp(temp, 27);
-      console.log("sunset")
-      document.querySelector('#mountains').classList.add("sunset");
-    } else if (index == 2) {
-      changeTemp(temp, 14);
-      console.log("moon")
-      document.querySelector('#mountains').classList.remove("sunset");
-      document.querySelector('#mountains').classList.add("moon");
-    } else if (index == 3) {
-      changeTemp(temp, 16);
-      console.log("clouds")
-      document.querySelector('#mountains').classList.add("clouds");
-    } else if (index == 4) {
-      changeTemp(temp, 8);
-      console.log("storm")
-      document.querySelector('#mountains').classList.add("storm");
-    } else if (index == 5) {
-      changeTemp(temp, -4);
-      console.log("snow")
-      document.querySelector('#mountains').classList.remove("moon");
-      document.querySelector('#mountains').classList.remove("storm");
-      document.querySelector('#mountains').classList.add("snow");
-    }
-
-    let loadingBar = document.querySelector('.loading-bar');
-    loadingBar.classList.add('active');
+// Weather mode switching
+function switchWeatherMode(index) {
+  const mode = weatherModes[index];
+  const mountains = document.querySelector('#mountains');
   
-    setTimeout(() => {
-      loadingBar.classList.remove('active');
-    }, 1200);
+  // Remove all weather classes
+  weatherModes.forEach(m => {
+    m.classes.forEach(c => mountains.classList.remove(c));
+  });
+  
+  // Add new weather classes
+  mode.classes.forEach(c => mountains.classList.add(c));
+  
+  // Update temperature with animation
+  changeTemp(tempElement, mode.temp);
+  
+  // Update sixths indicator
+  sixths[currentIndex].classList.remove('active');
+  sixths[index].classList.add('active');
+  currentIndex = index;
+  
+  // Loading bar animation
+  const loadingBar = document.querySelector('.loading-bar');
+  loadingBar.classList.add('active');
+  setTimeout(() => loadingBar.classList.remove('active'), 1200);
+  
+  console.log(`Weather mode: ${mode.id}`);
+}
+
+// Initialize on load
+window.onload = function() {
+  createDialGradient();
+  
+  document.querySelector('#rot-icons').addEventListener('click', () => {
+    const nextIndex = (currentIndex + 1) % weatherModes.length;
+    switchWeatherMode(nextIndex);
+    
+    // Rotate dial
+    angle += 60;
+    rotateDiv.style.transform = `rotate(${angle}deg)`;
+    rotateIcons.style.transform = `rotate(${angle}deg)`;
+  });
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') {
+      const nextIndex = (currentIndex + 1) % weatherModes.length;
+      switchWeatherMode(nextIndex);
+      angle += 60;
+      rotateDiv.style.transform = `rotate(${angle}deg)`;
+      rotateIcons.style.transform = `rotate(${angle}deg)`;
+    } else if (e.key === 'ArrowLeft') {
+      const prevIndex = (currentIndex - 1 + weatherModes.length) % weatherModes.length;
+      switchWeatherMode(prevIndex);
+      angle -= 60;
+      rotateDiv.style.transform = `rotate(${angle}deg)`;
+      rotateIcons.style.transform = `rotate(${angle}deg)`;
+    }
   });
 };

@@ -5,13 +5,23 @@
     --bg-secondary: #242830;
     --accent-cyan: #5ee7df;
     --accent-cyan-glow: rgba(94, 231, 223, 0.4);
+    --accent-cyan-light: rgba(94, 231, 223, 0.15);
     --accent-amber: #f5a623;
+    --accent-amber-glow: rgba(245, 166, 35, 0.4);
     --accent-warm: #ff6b6b;
+    --accent-warm-glow: rgba(255, 107, 107, 0.4);
+    --accent-purple: #b490ca;
+    --accent-purple-glow: rgba(180, 144, 202, 0.4);
     --text-primary: #e8e8e8;
     --text-secondary: #8a9199;
     --text-dim: rgba(255, 255, 255, 0.2);
     --shadow-dark: rgba(0, 0, 0, 0.6);
     --glass-bg: rgba(30, 34, 42, 0.85);
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
 }
 
 html, body {
@@ -28,12 +38,53 @@ body {
     align-items: center;
     background: var(--bg-primary);
     background-image: 
-        radial-gradient(ellipse at 30% 20%, rgba(94, 231, 223, 0.05) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 80%, rgba(245, 166, 35, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 30% 20%, rgba(94, 231, 223, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(245, 166, 35, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(180, 144, 202, 0.03) 0%, transparent 70%),
         linear-gradient(180deg, #0d0f12 0%, #1a1d24 50%, #0d0f12 100%);
     margin: 0;
     font-family: 'Rajdhani', sans-serif;
     overflow: hidden;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-cyan);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-cyan-light);
+}
+
+/* Accessibility - Skip link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+    padding: 8px 16px;
+    z-index: 1000;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 8px 0;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 2px solid var(--accent-amber);
+    outline-offset: 2px;
 }
 
 body::before {
@@ -88,7 +139,17 @@ body::before {
     box-shadow: 
         0 25px 50px -12px rgba(0, 0, 0, 0.5),
         0 0 80px -20px var(--accent-cyan-glow),
+        0 0 120px -40px var(--accent-purple-glow),
         inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    transition: transform 0.5s var(--transition-smooth), box-shadow 0.5s var(--transition-smooth);
+}
+.outer-rim:hover {
+    transform: scale(1.01);
+    box-shadow: 
+        0 30px 60px -15px rgba(0, 0, 0, 0.6),
+        0 0 100px -20px var(--accent-cyan-glow),
+        0 0 150px -40px var(--accent-purple-glow),
+        inset 0 1px 1px rgba(255, 255, 255, 0.08);
 }
 .outer-rim::before {
     content: '';
@@ -98,8 +159,30 @@ body::before {
     right: -2px;
     bottom: -2px;
     border-radius: 50%;
-    background: linear-gradient(145deg, rgba(94, 231, 223, 0.1) 0%, transparent 50%, transparent 100%);
+    background: linear-gradient(145deg, rgba(94, 231, 223, 0.15) 0%, transparent 50%, transparent 100%);
     z-index: -1;
+    animation: rimGlow 4s ease-in-out infinite;
+}
+.outer-rim::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent, rgba(94, 231, 223, 0.1), transparent, rgba(180, 144, 202, 0.1), transparent);
+    z-index: -2;
+    animation: rimRotate 20s linear infinite;
+    opacity: 0.5;
+}
+@keyframes rimGlow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+@keyframes rimRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 .outer-rim-2 {
     width: calc(var(--init-size) * 0.97);
@@ -130,6 +213,7 @@ body::before {
     overflow: hidden;
     top: 4%;
     bottom: unset;
+    border-radius: 8px;
 }
 .window {
     top: -1%;
@@ -142,6 +226,13 @@ body::before {
     box-shadow: 
         -2px 2px 2px 0 rgba(108, 115, 129, 0.3), 
         2px -2px 1px 0px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+.power-on .window {
+    box-shadow: 
+        -2px 2px 2px 0 rgba(108, 115, 129, 0.3), 
+        2px -2px 1px 0px rgba(0, 0, 0, 0.2),
+        0 0 30px -5px var(--accent-cyan-glow);
 }
 .outer-window:not(.invert) svg {
     opacity: 0;
@@ -725,12 +816,13 @@ body::before {
         0px 0px 0px 1px rgba(0,0,0, 1);
     width: 7%;
     height: 7%;
-    border-radius: 8px;
+    border-radius: 12px;
     left: unset;
     right: 22%;
     bottom: 18%;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
 }
 .left-btn-2 {
     bottom: 38%;
@@ -747,12 +839,20 @@ body::before {
         inset -2px 2px 4px 0px rgba(0,0,0, 0.2),
         1px -1px 3px 0px rgba(0, 0, 0, 1),
         0px 0px 2px 1px rgba(0,0,0, 0.3),
-        0 0 15px -3px var(--accent-cyan-glow);
+        0 0 20px -3px var(--accent-cyan-glow);
+    border-color: rgba(94, 231, 223, 0.2);
+    transform: translateY(-2px);
 }
 .left-btn-1:hover > svg,
 .left-btn-2:hover > svg,
 .left-btn-3:hover > svg  {
     scale: 0.97;
+}
+
+.left-btn-1:active,
+.left-btn-2:active,
+.left-btn-3:active {
+    transform: scale(0.95) translateY(0);
 }
 
 .left-btn-1 svg,
@@ -762,6 +862,7 @@ body::before {
     height: 70%;
     background: none;
     rotate: 180deg;
+    transition: transform 0.3s ease;
 }
 .left-btn-1 svg *,
 .left-btn-2 svg *,
@@ -791,11 +892,17 @@ body::before {
     left: 0;
     bottom: unset;
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(94, 231, 223, 0.1);
+    border-radius: 12px 0 0 12px;
     box-shadow: 
         inset 0px 0px 40px 42px rgba(0,0,0, 0.3),
-        inset -24px 0px 16px -22px rgba(94, 231, 223, 0.1),
+        inset -24px 0px 16px -22px rgba(94, 231, 223, 0.15),
         inset 0px -54px 18px -20px rgba(0, 0, 0, 0.4),
         inset 4px -4px 18px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+.power-on .right-modal {
+    border-color: rgba(94, 231, 223, 0.2);
 }
 .right-modal p.label {
     color: rgba(170, 170, 170, 0.2);
@@ -812,6 +919,7 @@ body::before {
     bottom: 6%;
     right: 5%;
     pointer-events: none;
+    transition: all 0.3s ease;
 }
 .power-on .right-modal p.label {
     color: var(--accent-cyan);
@@ -828,10 +936,19 @@ body::before {
     top: unset;
     bottom: 14%;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
     box-shadow: 
         0 0 8px 0 rgba(94, 231, 223, 0.1),
+        inset 0 2px 4px rgba(0,0,0, 0.8),
+        inset 0 -1px 2px rgba(255,255,255, 0.03);
+    border: 1px solid rgba(94, 231, 223, 0.1);
+    transition: all 0.3s ease;
+}
+.power-on .screen {
+    border-color: rgba(94, 231, 223, 0.2);
+    box-shadow: 
+        0 0 15px 0 rgba(94, 231, 223, 0.15),
         inset 0 2px 4px rgba(0,0,0, 0.8),
         inset 0 -1px 2px rgba(255,255,255, 0.03);
 }
@@ -839,7 +956,8 @@ body::before {
     color: var(--accent-cyan);
     text-shadow: 
         0 0 10px var(--accent-cyan-glow),
-        0 0 20px rgba(94, 231, 223, 0.4);
+        0 0 20px rgba(94, 231, 223, 0.4),
+        0 0 30px rgba(94, 231, 223, 0.2);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     transition-delay: 0.2s;
 }
@@ -870,6 +988,7 @@ p.temp {
     border-radius: 20px;
     left: 29%;
     bottom: -23%;
+    border: 1px solid rgba(94, 231, 223, 0.1);
     box-shadow: 
         2px -2px 4px 0 rgba(255, 255, 255, 0.05),
         -2px 2px 6px 0 rgba(0,0,0, 0.7),
@@ -877,7 +996,7 @@ p.temp {
         inset 0px 0px 1px 1px rgba(0, 0, 0, 0.7),
         inset -1px 2px 4px 0 rgba(255, 255, 255, 0.1);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .toggle.two {
     left: 18%;
@@ -887,10 +1006,12 @@ p.temp {
     color: var(--accent-cyan);
     text-shadow:
         0px 0px 8px var(--accent-cyan-glow);
+    border-color: var(--accent-cyan);
     box-shadow: 
         2px -2px 4px 0 rgba(255, 255, 255, 0.05),
         -2px 2px 6px 0 rgba(0,0,0, 0.7),
         0px -5px 12px 0 rgba(94, 231, 223, 0.15),
+        0px 0 15px 0 rgba(94, 231, 223, 0.2),
         inset 0px 0px 1px 1px rgba(0, 0, 0, 0.7),
         inset -1px 2px 4px 0 rgba(255, 255, 255, 0.1);
 }
@@ -903,6 +1024,9 @@ p.temp {
         inset 0px 0px 1px 1px rgba(0, 0, 0, 0.7),
         inset -1px 2px 4px 0 rgba(255, 255, 255, 0.15);
     scale: 0.97;
+}
+.toggle:active {
+    scale: 0.94;
 }
 g#rocket {
     filter: grayscale(0.7);
