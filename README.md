@@ -1,86 +1,54 @@
 <div align="center">
   
-  ![GitHub repo size](https://img.shields.io/github/repo-size/antono4/scenery)
-  ![GitHub stars](https://img.shields.io/github/stars/antono4/scenery?style=social)
-  ![GitHub forks](https://img.shields.io/github/forks/antono4/scenery?style=social)
+  ![GitHub repo size](https://img.shields.io/github/repo-size/adnan-bhaldar/anime-changing-scenery)
+  ![GitHub stars](https://img.shields.io/github/stars/adnan-bhaldar/Anime-Changing-Scenery?style=social)
+  ![GitHub forks](https://img.shields.io/github/forks/adnan-bhaldar/Anime-Changing-Scenery?style=social)
+[![Twitter Follow](https://img.shields.io/twitter/follow/Adnan__Bhaldar_?style=social)](https://twitter.com/intent/follow?screen_name=Adnan__Bhaldar)
 
   <br />
   <br />
   
-  <img src="./preview.png" width="600" />
-  <h2 align="center">Weather Widget</h2>
+  <img src="./Desktop.png" />
+  <h2 align="center">Anime Changing Scenery</h2>
 
-  A beautiful 3D-styled weather widget with dynamic scenery animations.<br />
-  Fully responsive, built with HTML, CSS, and JavaScript.
+  Anime Changing Scenery is a fully responsive Fun website page, <br />Responsive for all devices, built using HTML, CSS, and JavaScript.
 
-  <br />
-
-  ### Features
-  
-  - 🌡️ Temperature display with °F/°C toggle
-  - 🎨 Dynamic day/night scenery animations
-  - ✨ 3D effects with shadows and gradients
-  - 📱 Fully responsive design
-  - 🔘 Interactive power button
-
-  <br />
-
-  <a href="https://antono4.github.io/scenery/"><strong>➥ Live Demo</strong></a>
+   <a href="https://adnan-bhaldar.github.io/Anime-Changing-Scenery/"><strong>➥ Live Demo</strong></a>
 
 </div>
 
 <br />
 
-### Demo Screenshots
+### Demo Screeshots
 
-| Day Mode | Night Mode |
-|----------|------------|
-| ![Day](./day.png) | ![Night](./night.png) |
-
-<br />
+![Anime Changing Scenery](./Desktop2.png "Desktop Demo")
 
 ### Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 
-* Any modern web browser (Chrome, Firefox, Safari, Edge)
-* [Git](https://git-scm.com/downloads "Download Git") (optional for local development)
+* [Git](https://git-scm.com/downloads "Download Git") must be installed on your operating system.
 
 ### Run Locally
 
-To run **Weather Widget** locally, run this command:
+To run **Anime Changing Scenery** locally, run this command on your git bash:
 
 Linux and macOS:
 
 ```bash
-sudo git clone https://github.com/antono4/scenery.git
-cd scenery
-python3 -m http.server 8080
+sudo git clone https://github.com/adnan-bhaldar/Anime-Changing-Scenery.git
 ```
-
-Then open `http://localhost:8080` in your browser.
 
 Windows:
 
 ```bash
-git clone https://github.com/antono4/scenery.git
-cd scenery
-python -m http.server 8080
+git clone https://github.com/adnan-bhaldar/Anime-Changing-Scenery.git
 ```
 
-Then open `http://localhost:8080` in your browser.
+### Contact
 
-<br />
-
-### Technologies Used
-
-- HTML5
-- CSS3 (with CSS Variables, Flexbox)
-- Vanilla JavaScript
-- SVG Graphics
-
-<br />
+If you want to contact with me you can reach me at [Twitter](https://www.twitter.com/Adnan__Bhaldar).
 
 ### License
 
-This project is **free to use**.
+This project is **free to use** and does not contains any license.
