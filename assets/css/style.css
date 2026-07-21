@@ -929,18 +929,19 @@ g#biplane {
 
 .content-wrapper {
     display: flex;
-    gap: 25px;
-    max-width: 1200px;
+    flex-direction: row;
+    gap: 30px;
+    max-width: 1400px;
     width: 100%;
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
     transition: all 0.5s ease;
 }
 
 /* Widget Section */
 .widget-section {
     position: relative;
-    flex-shrink: 0;
+    flex: 0 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -948,9 +949,8 @@ g#biplane {
 
 /* Features Section - Side Panel */
 .features-section {
-    flex: 1;
-    max-width: 300px;
-    padding: 15px;
+    flex: 0 0 320px;
+    padding: 20px;
     background: linear-gradient(145deg, rgba(30, 34, 42, 0.95), rgba(20, 24, 30, 0.98));
     border: 1px solid rgba(94, 231, 223, 0.15);
     border-radius: 12px;
@@ -962,14 +962,14 @@ g#biplane {
 .features-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .features-container h2 {
     font-family: 'Orbitron', sans-serif;
     font-size: 1rem;
     color: var(--accent-cyan);
-    margin: 0 0 5px 0;
+    margin: 0 0 8px 0;
     text-shadow: 0 0 10px var(--accent-cyan-glow);
     text-align: center;
 }
@@ -978,10 +978,10 @@ g#biplane {
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(94, 231, 223, 0.1);
     border-radius: 10px;
-    padding: 12px;
+    padding: 14px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     transition: all 0.3s ease;
 }
 
@@ -1215,26 +1215,20 @@ body.day-mode .control-btn.active {
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
     .content-wrapper {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .features-section {
-        max-width: 100%;
-        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
     }
     
     .widget-section {
-        width: 100%;
-        display: flex;
-        justify-content: center;
+        flex: 1 1 auto;
+        min-width: 300px;
     }
-}
-
-@media (max-width: 768px) {
-    .landing-header h1 {
-        font-size: 1.5rem;
+    
+    .features-section {
+        flex: 0 0 auto;
+        width: 300px;
     }
 }
