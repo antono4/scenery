@@ -910,15 +910,17 @@ g#biplane {
 .features-panel {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    width: 100%;
-    padding-top: 10px;
+    gap: 6px;
+    width: 32%;
+    position: absolute;
+    bottom: -75%;
+    left: 0;
 }
 
 .time-display {
     background: linear-gradient(145deg, rgba(30, 34, 42, 0.9), rgba(20, 24, 30, 0.95));
-    padding: 10px 15px;
-    border-radius: 10px;
+    padding: 6px 10px;
+    border-radius: 8px;
     border: 1px solid rgba(94, 231, 223, 0.1);
     text-align: center;
 }
@@ -926,7 +928,7 @@ g#biplane {
 .time-display .time {
     display: block;
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.4rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--accent-cyan);
     text-shadow: 0 0 10px var(--accent-cyan-glow);
@@ -935,35 +937,35 @@ g#biplane {
 .time-display .date {
     display: block;
     font-family: 'Rajdhani', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.6rem;
     color: var(--text-secondary);
     text-transform: uppercase;
-    margin-top: 4px;
+    margin-top: 2px;
 }
 
 .weather-display {
     background: linear-gradient(145deg, rgba(30, 34, 42, 0.9), rgba(20, 24, 30, 0.95));
-    padding: 10px 15px;
-    border-radius: 10px;
+    padding: 6px 10px;
+    border-radius: 8px;
     border: 1px solid rgba(94, 231, 223, 0.1);
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 3px;
 }
 
 .weather-item {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 5px;
 }
 
 .weather-icon {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 }
 
 .weather-label {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.6rem;
     color: var(--text-secondary);
     text-transform: uppercase;
     flex-grow: 1;
@@ -971,7 +973,7 @@ g#biplane {
 
 .weather-value {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -979,13 +981,13 @@ g#biplane {
 .controls-display {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 6px;
 }
 
 .control-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
     background: linear-gradient(145deg, rgba(30, 34, 42, 0.9), rgba(20, 24, 30, 0.95));
     border: 1px solid rgba(94, 231, 223, 0.15);
     cursor: pointer;
@@ -1005,7 +1007,7 @@ g#biplane {
 }
 
 .control-btn .icon {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
 }
 
 .control-btn.active {
