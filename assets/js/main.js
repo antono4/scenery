@@ -211,4 +211,46 @@ window.onload = function() {
       this.querySelector('.icon').textContent = speedIcons[speedIndex];
     });
   }
+  
+  // Day/Night Mode Toggle
+  const dayNightToggle = document.getElementById('day-night-toggle');
+  let isNightMode = true;
+  
+  // Check current time and set initial mode
+  function checkTimeBasedMode() {
+    const hour = new Date().getHours();
+    // Night: 6 PM (18:00) to 6 AM, Day: 6 AM (06:00) to 6 PM (18:00)
+    return hour >= 6 && hour < 18;
+  }
+  
+  // Set initial mode based on time
+  function setInitialMode() {
+    isNightMode = !checkTimeBasedMode();
+    updateDayNightUI();
+  }
+  
+  // Update UI based on current mode
+  function updateDayNightUI() {
+    if (isNightMode) {
+      document.body.classList.remove('day-mode');
+      document.body.classList.add('night-mode');
+      dayNightToggle.querySelector('.icon').textContent = '🌙';
+    } else {
+      document.body.classList.remove('night-mode');
+      document.body.classList.add('day-mode');
+      dayNightToggle.querySelector('.icon').textContent = '☀️';
+    }
+  }
+  
+  // Toggle day/night mode
+  function toggleDayNight() {
+    isNightMode = !isNightMode;
+    updateDayNightUI();
+  }
+  
+  if (dayNightToggle) {
+    dayNightToggle.addEventListener('click', toggleDayNight);
+    // Set initial mode
+    setInitialMode();
+  }
 };

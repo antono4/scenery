@@ -912,6 +912,7 @@ g#biplane {
     text-align: center;
     padding: 30px 20px 20px;
     background: linear-gradient(180deg, rgba(20, 24, 30, 1) 0%, rgba(20, 24, 30, 0) 100%);
+    transition: all 0.5s ease;
 }
 
 .landing-header h1 {
@@ -922,6 +923,7 @@ g#biplane {
     text-shadow: 0 0 20px var(--accent-cyan-glow);
     margin: 0;
     letter-spacing: 3px;
+    transition: all 0.5s ease;
 }
 
 .landing-header .tagline {
@@ -931,6 +933,7 @@ g#biplane {
     text-transform: uppercase;
     margin-top: 8px;
     letter-spacing: 2px;
+    transition: all 0.5s ease;
 }
 
 /* Main Content - Side by Side Layout */
@@ -941,6 +944,7 @@ g#biplane {
     align-items: flex-start;
     min-height: calc(100vh - 150px);
     padding: 20px;
+    transition: all 0.5s ease;
 }
 
 .main-content > svg {
@@ -959,6 +963,7 @@ g#biplane {
     width: 100%;
     justify-content: center;
     align-items: flex-start;
+    transition: all 0.5s ease;
 }
 
 /* Widget Section */
@@ -975,6 +980,7 @@ g#biplane {
     background: linear-gradient(145deg, rgba(30, 34, 42, 0.9), rgba(20, 24, 30, 0.95));
     border: 1px solid rgba(94, 231, 223, 0.15);
     border-radius: 15px;
+    transition: all 0.5s ease;
 }
 
 .features-container h2 {
@@ -1074,6 +1080,7 @@ g#biplane {
     padding: 20px;
     background: rgba(20, 24, 30, 1);
     border-top: 1px solid rgba(94, 231, 223, 0.1);
+    transition: all 0.5s ease;
 }
 
 .landing-footer p {
@@ -1081,6 +1088,176 @@ g#biplane {
     font-size: 0.85rem;
     color: var(--text-secondary);
     margin: 0;
+}
+
+/* ==========================================
+   DAY/NIGHT MODE STYLES
+   ========================================== */
+
+/* Night Mode (Default - Dark) */
+body,
+.landing-header,
+.main-content,
+.features-section,
+.feature-card,
+.feature-card .time-display,
+.feature-card .weather-item,
+.landing-footer {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+body.night-mode {
+    --accent-cyan: #5ee7df;
+    --accent-cyan-glow: rgba(94, 231, 223, 0.5);
+}
+
+/* Day Mode (Light) */
+body.day-mode {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --text-primary: #1a1a2e;
+    --text-secondary: #666666;
+    --accent-cyan: #0066cc;
+    --accent-cyan-glow: rgba(0, 102, 204, 0.3);
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --card-border: rgba(0, 102, 204, 0.2);
+}
+
+body.day-mode .landing-header {
+    background: linear-gradient(180deg, rgba(245, 245, 245, 1) 0%, rgba(245, 245, 245, 0) 100%);
+}
+
+body.day-mode .landing-header h1 {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 15px var(--accent-cyan-glow);
+}
+
+body.day-mode .landing-header .tagline {
+    color: var(--text-secondary);
+}
+
+body.day-mode .features-section {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.day-mode .feature-card {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: var(--card-border);
+}
+
+body.day-mode .feature-card:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.1);
+}
+
+body.day-mode .feature-info h3 {
+    color: var(--text-primary);
+}
+
+body.day-mode .feature-info p {
+    color: var(--text-secondary);
+}
+
+body.day-mode .feature-card .time-display {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.day-mode .feature-card .time-display .time {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 10px var(--accent-cyan-glow);
+}
+
+body.day-mode .feature-card .time-display .date {
+    color: var(--text-secondary);
+}
+
+body.day-mode .feature-card .weather-item {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.day-mode .feature-card .weather-value {
+    color: var(--text-primary);
+}
+
+body.day-mode .control-btn {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+body.day-mode .control-btn:hover {
+    border-color: var(--accent-cyan);
+}
+
+body.day-mode .landing-footer {
+    background: var(--bg-secondary);
+    border-color: var(--card-border);
+}
+
+body.day-mode .landing-footer p {
+    color: var(--text-secondary);
+}
+
+/* Day Mode Widget Styles */
+body.day-mode .outer-rim {
+    filter: brightness(1.1) saturate(1.2);
+}
+
+body.day-mode .inner-rim {
+    box-shadow: inset 0px 0px 60px 42px rgba(200, 220, 230, 0.8),
+                inset -24px 0px 16px -22px rgba(100, 150, 180, 0.6),
+                inset 0px -54px 18px -20px rgba(0, 0, 0, 0.2),
+                inset 4px -4px 18px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.day-mode .outer-window {
+    box-shadow: 0 0 20px 5px rgba(135, 206, 250, 0.5),
+                0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+body.day-mode #sky {
+    fill: #87ceeb !important;
+}
+
+body.day-mode .right-modal {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: inset 0px 0px 40px 42px rgba(200, 220, 230, 0.5),
+                inset -24px 0px 16px -22px rgba(100, 150, 180, 0.4);
+}
+
+body.day-mode .right-modal p.label {
+    color: rgba(100, 100, 100, 0.5);
+}
+
+body.day-mode .screen {
+    background: rgba(240, 240, 240, 0.9);
+    box-shadow: 0 0 5px 0 rgba(135, 206, 250, 0.5),
+                inset 0 0 2px 2px rgba(0, 0, 0, 0.1),
+                inset 0 0 2px 2px rgba(255, 255, 255, 0.9);
+}
+
+body.day-mode p.temp {
+    color: rgba(0, 0, 0, 0.6);
+    text-shadow: none;
+}
+
+body.day-mode .toggle {
+    background: rgba(255, 255, 255, 0.8);
+    color: rgba(100, 100, 100, 0.8);
+    box-shadow: 2px -2px 4px 0 rgba(255, 255, 255, 0.3),
+                -2px 2px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+body.day-mode .toggle:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Control button active state */
+body.day-mode .control-btn.active {
+    background: linear-gradient(145deg, rgba(0, 102, 204, 0.2), rgba(0, 102, 204, 0.1));
+    border-color: var(--accent-cyan);
 }
 
 /* Responsive */
