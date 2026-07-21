@@ -1064,34 +1064,17 @@ g#biplane {
     height: 34px;
 }
 
-/* Footer */
-.landing-footer {
-    text-align: center;
-    padding: 12px;
-    transition: all 0.5s ease;
-}
-
-.landing-footer p {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.7rem;
-    color: var(--text-secondary);
-    margin: 0;
-    opacity: 0.6;
-}
-
 /* ==========================================
    DAY/NIGHT MODE STYLES
    ========================================== */
 
 /* Night Mode (Default - Dark) */
 body,
-.landing-header,
 .main-content,
 .features-section,
 .feature-card,
 .feature-card .time-display,
-.feature-card .weather-item,
-.landing-footer {
+.feature-card .weather-item {
     background-color: var(--bg-primary);
     color: var(--text-primary);
 }
@@ -1169,15 +1152,6 @@ body.day-mode .control-btn {
 
 body.day-mode .control-btn:hover {
     border-color: var(--accent-cyan);
-}
-
-body.day-mode .landing-footer {
-    background: var(--bg-secondary);
-    border-color: var(--card-border);
-}
-
-body.day-mode .landing-footer p {
-    color: var(--text-secondary);
 }
 
 /* Day Mode Widget Styles */
